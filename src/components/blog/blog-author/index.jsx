@@ -22,7 +22,7 @@ componentDidMount = () => {
         </Col>
         <Col>
           <div>by</div>
-          <h6>{this.props.name}</h6>
+          <h6>{this.props.name + " " + this.props.surname}</h6>
         </Col>
       </Row>
     );
