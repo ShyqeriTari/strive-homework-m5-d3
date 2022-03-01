@@ -44,8 +44,7 @@ componentDidUpdate = (prevProps, prevState) => {
       </Row>
       <Row>
         {this.state.authors.map(author =>(
-          <>{
-          console.log("The"+author.name)}
+          <>
         <Col>
             <BlogItem key={author.id} author={author} />
             </Col>

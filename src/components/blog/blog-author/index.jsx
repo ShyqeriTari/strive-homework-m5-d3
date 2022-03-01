@@ -3,17 +3,6 @@ import { Row, Col, Image } from "react-bootstrap";
 import "./styles.css";
 export default class BlogAuthor extends Component {
 
-componentDidMount = () => {
-  console.log(this.props)
-}
-
-
-  componentDidUpdate = (prevProps, prevState) => {
-    if(this.props !== prevProps){
-    console.log("MY PROPS" + this.props)
-  }
-  }
-
   render() {
     return (
       <Row>
