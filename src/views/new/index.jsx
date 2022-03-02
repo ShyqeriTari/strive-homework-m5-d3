@@ -4,56 +4,114 @@ import ReactQuill from "react-quill";
 import { Container, Form, Button } from "react-bootstrap";
 import "./styles.css";
 export default class NewBlogPost extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { text: "" };
-    this.handleChange = this.handleChange.bind(this);
+  state = { experience:{
+    category: undefined,
+    title: undefined,
+    cover: undefined,
+    readTime:{value: undefined,
+              unit: undefined},
+    author:{name: undefined,
+            avatar: undefined},
+    content: undefined,
+  }}
+
+  grabValue = (property, value) => {
+    this.setState({ experience:{ ...this.state.experience, [property]: value }})
   }
 
-  handleChange(value) {
-    this.setState({ text: value });
+  handleSubmit = async (event) => {
+    event.preventDefault()
+
+    try {
+      await fetch(
+        "http://localhost:3001/blogs",
+        {
+          method: "POST",
+          body: JSON.stringify(this.state.experience),
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      )
+    } catch (error) {
+      console.log(error)
+    }
   }
+
+
 
   render() {
     return (
-      <Container className="new-blog-container">
-        <Form className="mt-5">
-          <Form.Group controlId="blog-form" className="mt-3">
-            <Form.Label>Title</Form.Label>
-            <Form.Control size="lg" placeholder="Title" />
-          </Form.Group>
-          <Form.Group controlId="blog-category" className="mt-3">
-            <Form.Label>Category</Form.Label>
-            <Form.Control size="lg" as="select">
-              <option>Category1</option>
-              <option>Category2</option>
-              <option>Category3</option>
-              <option>Category4</option>
-              <option>Category5</option>
-            </Form.Control>
-          </Form.Group>
-          <Form.Group controlId="blog-content" className="mt-3">
-            <Form.Label>Blog Content</Form.Label>
-            <ReactQuill
-              value={this.state.text}
-              onChange={this.handleChange}
-              className="new-blog-content"
-            />
-          </Form.Group>
-          <Form.Group className="d-flex mt-3 justify-content-end">
-            <Button type="reset" size="lg" variant="outline-dark">
-              Reset
-            </Button>
-            <Button
-              type="submit"
-              size="lg"
-              variant="dark"
-              style={{ marginLeft: "1em" }}
-            >
-              Submit
-            </Button>
-          </Form.Group>
-        </Form>
+      <Container className="new-blog-container pt-5">
+    <Form onSubmit={(event) => this.handleSubmit(event)}>
+      <Form.Group controlId="formBasicCategory">
+        <Form.Label>Category</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter category"
+          onChange={(e) => this.grabValue("category", e.target.value)}
+        />
+      </Form.Group>
+
+      <Form.Group controlId="formBasicTitle">
+        <Form.Label>Title</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter Title"
+          onChange={(e) => this.grabValue("title", e.target.value)}
+        />
+      </Form.Group>
+
+      <Form.Group controlId="formBasicCover">
+        <Form.Label>Cover</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter Cover"
+          onChange={(e) => this.grabValue("cover", e.target.value)}
+        />
+      </Form.Group>
+
+      <Form.Group controlId="formBasicReadTime">
+        <Form.Label>Read time</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter value"
+          onChange={(e) => this.grabValue("readTime", {...this.state.experience.readTime,"value": e.target.value})}
+        />
+        <Form.Control
+          type="text"
+          placeholder="Enter unit"
+          onChange={(e) => this.grabValue("readTime", {...this.state.experience.readTime,"unit": e.target.value})}
+        />
+      </Form.Group>
+
+      <Form.Group controlId="formBasicAuthor">
+        <Form.Label>Author</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter name"
+          onChange={(e) => this.grabValue("author", {...this.state.experience.author,"name": e.target.value})}
+        />
+        <Form.Control
+          type="text"
+          placeholder="Enter avatar"
+          onChange={(e) => this.grabValue("author", {...this.state.experience.author,"avatar": e.target.value})}
+        />
+      </Form.Group>
+
+      <Form.Group controlId="formBasicCover">
+        <Form.Label>Content</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter content"
+          onChange={(e) => this.grabValue("content", e.target.value)}
+        />
+      </Form.Group>
+
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
       </Container>
     );
   }
