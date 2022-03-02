@@ -5,14 +5,14 @@ import { Container, Form, Button } from "react-bootstrap";
 import "./styles.css";
 export default class NewBlogPost extends Component {
   state = { experience:{
-    category: undefined,
-    title: undefined,
-    cover: undefined,
-    readTime:{value: undefined,
-              unit: undefined},
-    author:{name: undefined,
-            avatar: undefined},
-    content: undefined,
+    category: null,
+    title: null,
+    cover:null,
+    readTime:{value: null,
+              unit: null},
+    author:{name: null,
+            avatar: null},
+    content: null,
   }}
 
   grabValue = (property, value) => {
