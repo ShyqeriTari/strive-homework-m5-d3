@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Image } from "react-bootstrap";
+import { Row, Col, Image, Button } from "react-bootstrap";
 import "./styles.css";
 export default class BlogAuthor extends Component {
 
@@ -11,7 +11,7 @@ export default class BlogAuthor extends Component {
         </Col>
         <Col>
           <div>by</div>
-          <h6>{this.props.name}</h6>
+          <h6 className="mr-3">{this.props.name}</h6>
         </Col>
       </Row>
     );
