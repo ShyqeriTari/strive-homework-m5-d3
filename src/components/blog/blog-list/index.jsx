@@ -4,18 +4,18 @@ import BlogItem from "../blog-item";
 import posts from "../../../data/posts.json";
 export default class BlogList extends Component {
 
-state = {authors: []}
+state = {blogs: []}
 
 fetchData = async() => {
   try {
 
-    const response = await fetch("http://localhost:3001/authors")
+    const response = await fetch("http://localhost:3001/blogs")
     const data = await response.json()
 
 if (response.ok){
-    this.setState({authors:data})
+    this.setState({blogs:data})
     console.log(data)
-    console.log(this.state.authors)
+    console.log(this.state.blogs)
 }
   } catch (error) {
     console.log(error)
@@ -27,7 +27,7 @@ componentDidMount = () => {
 }
 
 componentDidUpdate = (prevProps, prevState) => {
-  if(prevState === this.state.authors){
+  if(prevState === this.state.blogs){
   this.fetchData()
   }
 }
@@ -43,10 +43,10 @@ componentDidUpdate = (prevProps, prevState) => {
         ))}
       </Row>
       <Row>
-        {this.state.authors.map(author =>(
+        {this.state.blogs.map(blog =>(
           <>
         <Col>
-            <BlogItem key={author.id} author={author} />
+            <BlogItem key={blog.id} blog={blog} />
             </Col>
             </>))
   }
