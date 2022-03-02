@@ -46,7 +46,7 @@ componentDidUpdate = (prevProps, prevState) => {
         {this.state.blogs.map(blog =>(
           <>
         <Col>
-            <BlogItem key={blog.id} blog={blog} />
+            <BlogItem key={blog.id} {...blog} />
             </Col>
             </>))
   }

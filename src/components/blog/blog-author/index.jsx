@@ -7,11 +7,11 @@ export default class BlogAuthor extends Component {
     return (
       <Row>
         <Col xs={2} className="mx-3">
-          <Image className="blog-author" src={this.props.author.avatar} roundedCircle />
+          <Image className="blog-author" src={this.props.avatar} roundedCircle />
         </Col>
         <Col>
           <div>by</div>
-          <h6>{this.props.author.name}</h6>
+          <h6>{this.props.name}</h6>
         </Col>
       </Row>
     );
