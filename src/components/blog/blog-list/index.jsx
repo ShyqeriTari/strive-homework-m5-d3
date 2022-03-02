@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
 import BlogItem from "../blog-item";
 import posts from "../../../data/posts.json";
+
+
 export default class BlogList extends Component {
 
 state = {blogs: []}
@@ -37,18 +39,18 @@ componentDidUpdate = (prevProps, prevState) => {
       <>
       <Row>
         {posts.map((post) => (
-          <Col md={4} style={{ marginBottom: 50 }}>
-            <BlogItem key={post.title} {...post} />
+          <Col md={4} key={post._id} style={{ marginBottom: 50 }}>
+            <BlogItem {...post} />
           </Col>
         ))}
       </Row>
       <Row>
         {this.state.blogs.map(blog =>(
-          <>
-        <Col>
-            <BlogItem key={blog.id} {...blog} />
+         
+        <Col key={blog.id}>
+            <BlogItem {...blog} />
             </Col>
-            </>))
+           ))
   }
       </Row>
       </>
