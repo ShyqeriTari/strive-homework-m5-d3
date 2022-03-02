@@ -94,7 +94,7 @@ export default class NewBlogPost extends Component {
         />
         <Form.Control
           type="text"
-          placeholder="Enter avatar"
+          defaultValue="https://ui-avatars.com/api/?name="
           onChange={(e) => this.grabValue("author", {...this.state.experience.author,"avatar": e.target.value})}
         />
       </Form.Group>
