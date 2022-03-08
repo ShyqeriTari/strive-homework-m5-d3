@@ -9,7 +9,7 @@ export default class BlogList extends Component {
 
 state = {blogs: []}
 
-apiUrl = process.env.BLOGS
+apiUrl = process.env.REACT_APP_BLOGS
 
 fetchData = async() => {
   try {

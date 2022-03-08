@@ -18,7 +18,7 @@ export default class NewBlogPost extends Component {
   }}
 
 
-apiUrl= process.env.BLOGS
+apiUrl= process.env.REACT_APP_BLOGS
 
 
   id = this.props.match.params;
