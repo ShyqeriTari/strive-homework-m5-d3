@@ -18,7 +18,7 @@ export default class NewBlogPost extends Component {
   }}
 
 
-
+apiUrl= process.env.BLOGS
 
 
   id = this.props.match.params;
@@ -32,7 +32,7 @@ export default class NewBlogPost extends Component {
 
     try {
       await fetch(
-        "http://localhost:3001/blogs",
+        `${this.apiUrl}/blogs`,
         {
           method: "POST",
           body: JSON.stringify(this.state.experience),
@@ -51,7 +51,7 @@ export default class NewBlogPost extends Component {
 event.preventDefault()
     try {
       await fetch(
-        `http://localhost:3001/blogs/${this.id.id}`,
+        `${this.apiUrl}/blogs/${this.id.id}`,
         {
           method: "DELETE",
          

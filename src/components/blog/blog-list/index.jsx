@@ -9,10 +9,12 @@ export default class BlogList extends Component {
 
 state = {blogs: []}
 
+apiUrl = process.env.BLOGS
+
 fetchData = async() => {
   try {
 
-    const response = await fetch("http://localhost:3001/blogs")
+    const response = await fetch(`${this.apiUrl}/blogs`)
     const data = await response.json()
 
 if (response.ok){
