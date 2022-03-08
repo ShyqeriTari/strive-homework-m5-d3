@@ -11,7 +11,7 @@ state = {blogs: []}
 
 apiUrl = process.env.REACT_APP_BLOGS
 
-fetchData = async() => {
+fetchData = async () => {
   try {
 
     const response = await fetch(`${this.apiUrl}/blogs`)
