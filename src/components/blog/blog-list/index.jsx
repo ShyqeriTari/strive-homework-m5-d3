@@ -26,18 +26,18 @@ if (response.ok){
   }
 }
 
-DownloadData = async (blogId) => {
-  try {
+// DownloadData = async (blogId) => {
+//   try {
 
-    const response = await fetch(`${this.apiUrl}/files/downloadPDF/${blogId}`)
+//     const response = await fetch(`${this.apiUrl}/files/downloadPDF/${blogId}`)
 
-if (response.ok){
-    console.log("pdf downloaded")
-}
-  } catch (error) {
-    console.log(error)
-  }
-}
+// if (response.ok){
+//     console.log("pdf downloaded")
+// }
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
 
 componentDidMount = () => {
   this.fetchData()
@@ -67,7 +67,9 @@ componentDidUpdate = (prevProps, prevState) => {
             <Link to={`/new/${blog.id}`}>
           <Button>Edit</Button>
           </Link>
-          <Button onClick={() => {this.DownloadData(blog.id)}}>Download</Button>
+          <Link to={`${this.apiUrl}/files/downloadPDF/${blog.id}`}>
+          <Button style={{marginLeft: "20px", backgroundColor: "green !important"}}>Download</Button>
+          </Link>
             </Col>
            ))
   }
