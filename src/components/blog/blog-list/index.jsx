@@ -39,6 +39,10 @@ if (response.ok){
 //   }
 // }
 
+downloadData= (blogId) =>  {
+    window.open(`${this.apiUrl}/files/downloadPDF/${blogId}`);
+  };
+
 componentDidMount = () => {
   this.fetchData()
 }
@@ -67,9 +71,9 @@ componentDidUpdate = (prevProps, prevState) => {
             <Link to={`/new/${blog.id}`}>
           <Button>Edit</Button>
           </Link>
-          <Link to={`${this.apiUrl}/files/downloadPDF/${blog.id}`}>
-          <Button style={{marginLeft: "20px", backgroundColor: "green !important"}}>Download</Button>
-          </Link>
+
+          <Button style={{marginLeft: "20px", backgroundColor: "green !important"}} onClick={()=> {this.downloadData(blog.id)}}>Download</Button>
+     
             </Col>
            ))
   }
