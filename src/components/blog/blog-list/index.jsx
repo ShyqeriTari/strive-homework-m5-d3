@@ -72,7 +72,7 @@ componentDidUpdate = (prevProps, prevState) => {
           <Button>Edit</Button>
           </Link>
 
-          <Button style={{marginLeft: "20px", backgroundColor: "green !important"}} onClick={()=> {this.downloadData(blog.id)}}>Download</Button>
+          <Button style={{marginLeft: "20px"}} variant="success" onClick={()=> {this.downloadData(blog.id)}}>Download</Button>
      
             </Col>
            ))
