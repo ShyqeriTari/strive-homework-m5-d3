@@ -40,15 +40,6 @@ apiUrl= process.env.REACT_APP_BLOGS
           },
         }
       )
-
-      await fetch(`${this.apiUrl}/blogs/registerEmail`,
-      {
-        method: "POST",
-        body: JSON.stringify(this.state.experience.author.email),
-        headers: {
-          "Content-type": "application/json",
-        },
-      })
       
     } catch (error) {
       console.log(error)
