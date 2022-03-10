@@ -11,6 +11,7 @@ export default class NewBlogPost extends Component {
     readTime:{value: null,
               unit: null},
     author:{name: null,
+      email:null,
             avatar: null},
     content: null,
   }}
@@ -39,6 +40,15 @@ apiUrl= process.env.REACT_APP_BLOGS
           },
         }
       )
+
+      await fetch(`${this.apiUrl}/blogs/registerEmail`,
+      {
+        method: "POST",
+        body: JSON.stringify(this.state.experience.author.email),
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
       
     } catch (error) {
       console.log(error)
@@ -131,6 +141,11 @@ event.preventDefault()
           type="text"
           placeholder="Enter name"
           onChange={(e) => this.grabValue("author", {...this.state.experience.author,"name": e.target.value})}
+        />
+        <Form.Control
+          type="text"
+          placeholder="Enter email"
+          onChange={(e) => this.grabValue("author", {...this.state.experience.author,"email": e.target.value})}
         />
         <Form.Control
           type="text"
